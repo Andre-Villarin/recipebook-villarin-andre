@@ -1,0 +1,8 @@
+demo/
+env_site/
+aboutfiles.txt
+mathstuff.py
+.DS_Store
+.tmp/
+settings/
+__pycache__/
