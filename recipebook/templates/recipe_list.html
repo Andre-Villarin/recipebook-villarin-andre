@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <h2>Recipe Directory</h2>
+    <i>Click any of the links below to be redirected to a recipe.</i>
+    <ul>    
+        <li> <a href = "{% url 'recipe_1' %}">Pork Sinigang</a></li>
+        <li> <a href = "{% url 'recipe_2' %}">Pork Adobo</a></li>
+    </ul>
+{% endblock %}
