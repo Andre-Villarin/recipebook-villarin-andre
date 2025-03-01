@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+{% extends 'base.html' %}
+
+{% block title %}{{ recipe.recipe_name }}{% endblock %}
+
+{% block content %}
+    <h2>{{ recipe.recipe_name }}</h2>
+    {% for ingredient in recipe.ingredients.all %}
+    <li>{{ recipe_ingredient.ingredient.name }}, <i> </i> {{ recipe_ingredient.ingredient.quantity }}</li>
+    {% endfor %}
+    <br>
+</br>
+    <a href="{% url 'recipe_list' %}">Back to Recipe List</a>
+
+{% endblock %}
+</html>

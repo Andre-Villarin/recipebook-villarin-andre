@@ -1,11 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from.models import Recipe
 
 def recipe_list(request): 
 	return render(request, "recipe_list.html") 
 
 def recipe_info(request, id):
-     recipe = get_object_or_404(Recipe, id=id)
+     recipe = Recipe.objects.get(id=id)
      return render(request, "recipe_info.html", {"recipe": recipe})
 
 # previous hard-coded views
