@@ -11,6 +11,10 @@ class IngredientAdmin(admin.ModelAdmin):
 
 class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
+    list_display = ('id','recipe_name')
+    search_fields = ['id','recipe_name']
+    list_filter = ['id','recipe_name']
+    ordering = ['id']
 
 admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Recipe, RecipeAdmin)
