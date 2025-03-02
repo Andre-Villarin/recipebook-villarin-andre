@@ -5,7 +5,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
-        self.name
+        return self.name
 
     class Meta:
         unique_together = ['name']
@@ -14,7 +14,7 @@ class Recipe(models.Model):
     recipe_name = models.CharField(max_length=255)
 
     def __str__(self):
-        self.recipe_name
+        return self.recipe_name
 
     def get_absolute_url(self):
         return reverse('recipe_info', args=[str(self.id)])
@@ -36,4 +36,4 @@ class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=255)
 
     def __str__(self):
-        self.name
+        return self.quantity

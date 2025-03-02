@@ -9,7 +9,9 @@
     <i>Click any of the links below to be redirected to a recipe.</i>
     <ul>    
         {% for recipe in recipes %}
-        <li>{{ recipe.name }} <i>
+            <li>
+                <a href="{% url 'recipe_info' recipe.id %}">{{ recipe.recipe_name }}</a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

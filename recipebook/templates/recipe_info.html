@@ -7,8 +7,8 @@
 
 {% block content %}
     <h2>{{ recipe.recipe_name }}</h2>
-    {% for ingredient in recipe.ingredients.all %}
-    <li>{{ recipe_ingredient.ingredient.name }}, <i></i> {{ recipe_ingredient.ingredient.quantity }}</li>
+    {% for recipe_ingredient in recipe.ingredients.all %}
+    <li>{{ recipe_ingredient.ingredient.name }}, <i></i> {{ recipe_ingredient.quantity }}</li>
     {% endfor %}
     <br>
 </br>
