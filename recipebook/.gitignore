@@ -7,4 +7,3 @@ mathstuff.py
 settings/
 __pycache__/
 comments.txt
-db.sqlite3
