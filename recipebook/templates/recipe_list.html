@@ -14,11 +14,19 @@
             </li>
         {% endfor %}
     </ul>
-    <!-- logout button  -->
-    <form method="POST" action="{% url 'logout' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Logout</button>
-    </form>
+    <!-- login/logout buttons -->
+    <nav>
+        {% if request.user.is_authenticated %}
+        Currently logged in as <b>'{{ user.username }}'. </b>
+        
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+
+        {% else %}
+            Currently logged out. <a href="{% url 'login' %}">Login?</a>
+        {% endif %}
+    </nav>
 {% endblock %}
 </html>
