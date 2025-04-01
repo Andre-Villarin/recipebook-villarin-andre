@@ -18,7 +18,7 @@
     <nav>
         {% if request.user.is_authenticated %}
         Currently logged in as <b>'{{ user.username }}'. </b>
-        
+        <a href="{% url 'add_recipe' %}">Add a Recipe?</a>
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit">Logout</button>

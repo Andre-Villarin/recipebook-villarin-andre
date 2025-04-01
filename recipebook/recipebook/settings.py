@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import environ, os
 from pathlib import Path
-from django.conf import settings
-from django.conf.urls.static import static
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -142,5 +140,3 @@ LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, env('MEDIA_ROOT'))
 MEDIA_URL = env('MEDIA_URL')
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

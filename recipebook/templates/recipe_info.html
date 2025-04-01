@@ -13,9 +13,10 @@
         Last updated on <i>{{ recipe.updated_on|date:"F d, Y" }}</i>
     <br>
     {% block main %}
-        {% if object.task_image %}
-            <img src="{{ object.task_image.url }}" alt="">
-        {% endif %}
+        {% for image in recipe.images.all %}
+            <img src="{{ image.image.url }}" alt="{{ image.description }}">
+            <p>{{ image.description }}</p>
+        {% endfor %}
     {% endblock %}
     <br> 
         <h3>

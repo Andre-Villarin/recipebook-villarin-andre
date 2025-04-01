@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
-from.models import Recipe
+from .forms import RecipeForm
+from .models import Recipe
 from django.contrib.auth.decorators import login_required
 
 def list_redirect(request):
@@ -13,3 +14,15 @@ def recipe_list(request):
 def recipe_info(request, id):
      recipe = Recipe.objects.get(id=id)
      return render(request, "recipe_info.html", {"recipe": recipe})
+
+@login_required
+def add_recipe(request):
+    form = RecipeForm()
+    if request.method == 'POST':
+        form = RecipeForm(request.POST)
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.author = request.user
+            recipe.save() 
+            return redirect('recipe_info', id=recipe.pk)
+    return render(request, "add_recipe.html", {"form": form})
