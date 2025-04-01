@@ -6,9 +6,7 @@
 {% block title %} Post Recipe {% endblock %}
 
 {% block content %}
-    <h2>
-        Post Image for {{ recipe.id }}
-    </h2>
+    <h2> Post Image </h2>
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
