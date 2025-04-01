@@ -1,6 +1,6 @@
 from django.contrib import admin
 from ledger import models
-from .models import Ingredient, Recipe, RecipeIngredient, Profile
+from .models import Ingredient, Recipe, RecipeIngredient, Profile, RecipeImage
 
 class ProfileInLine(admin.StackedInline):
     model = Profile
@@ -23,8 +23,13 @@ class RecipeAdmin(admin.ModelAdmin):
     list_filter = ['id','recipe_name']
     ordering = ['id']
 
+class RecipeImageAdmin(admin.ModelAdmin):
+    model = RecipeImage
+    list_display = ('id','description')
+
 admin.site.unregister(models.User)
 admin.site.register(models.User, UserAdmin)
 admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(RecipeIngredient, RecipeIngredientAdmin)
+admin.site.register(RecipeImage, RecipeImageAdmin)
