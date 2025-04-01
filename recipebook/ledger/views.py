@@ -1,5 +1,5 @@
-from django.shortcuts import redirect, render
-from .forms import RecipeForm
+from django.shortcuts import get_object_or_404, redirect, render
+from .forms import RecipeForm, RecipeImageForm
 from .models import Recipe
 from django.contrib.auth.decorators import login_required
 
@@ -26,3 +26,14 @@ def add_recipe(request):
             recipe.save() 
             return redirect('recipe_info', id=recipe.pk)
     return render(request, "add_recipe.html", {"form": form})
+
+def add_image(request, id):
+    form = RecipeImageForm(request.POST, request.FILES)
+    recipe = get_object_or_404(Recipe, id=id)
+    if form.is_valid():
+        image = form.save(commit=False)
+        image.recipe = Recipe.objects.get(id=id)
+        image.save()
+        return redirect('recipe_info', id=recipe.id)
+    
+    return render(request, "add_image.html", {'form': form})

@@ -2,6 +2,7 @@
 <html>
 
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ recipe.recipe_name }}{% endblock %}
 {% block content %}
@@ -12,10 +13,12 @@
     <br>
         Last updated on <i>{{ recipe.updated_on|date:"F d, Y" }}</i>
     <br>
+        <a href="{% url 'add_image' recipe.id %}">Add image for this recipe?</a>
+    <br>
+    <br>
     {% block main %}
         {% for image in recipe.images.all %}
-            <img src="{{ image.image.url }}" alt="{{ image.description }}">
-            <p>{{ image.description }}</p>
+            <img src="{{ image.image.url }}" alt="{{ image.description }}" style="max-width: 400px;">
         {% endfor %}
     {% endblock %}
     <br> 
