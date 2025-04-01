@@ -5,17 +5,30 @@
 
 {% block title %}{{ recipe.recipe_name }}{% endblock %}
 {% block content %}
-    <h2>{{ recipe.recipe_name }}</h2>
-    Written by <i>'{{ recipe.author.username }}'</i> on <i>{{ recipe.created_on|date:"F d, Y" }} </i>
+    <h2>
+        {{ recipe.recipe_name }}
+    </h2>
+        Written by <i>'{{ recipe.author.username }}'</i> on <i>{{ recipe.created_on|date:"F d, Y" }} </i>
     <br>
-    Last updated on <i>{{ recipe.updated_on|date:"F d, Y" }}</i>
+        Last updated on <i>{{ recipe.updated_on|date:"F d, Y" }}</i>
     <br>
-    <br> <h3>Ingredients:</h3>
-    {% for recipe_ingredient in recipe.ingredients.all %}
-    <li>{{ recipe_ingredient.ingredient.name }}, <i></i> {{ recipe_ingredient.quantity }}</li>
-    {% endfor %}
+    {% block main %}
+        {% if object.task_image %}
+            <img src="{{ object.task_image.url }}" alt="">
+        {% endif %}
+    {% endblock %}
+    <br> 
+        <h3>
+            Ingredients:
+        </h3>
+        {% for recipe_ingredient in recipe.ingredients.all %}
+    <li>
+        {{ recipe_ingredient.ingredient.name }}, {{ recipe_ingredient.quantity }}
+    </li>
+        {% endfor %}
+
     <br>
-    <a href="{% url 'recipe_list' %}">Back to Recipe List</a>
+        <a href="{% url 'recipe_list' %}">Back to Recipe List</a>
     <br>
     <br>
 {% endblock %}
