@@ -7,3 +7,4 @@ mathstuff.py
 settings/
 __pycache__/
 comments.txt
+.env
